@@ -17,7 +17,7 @@
       <tr>
         <td><%= fest.name %></td>
         <td><%= fest.description %></td>
-        <td><%= fest.department_id %></td>
+        <td><%= fest.department.name %></td>
         <td><%= link_to 'Show', fest %></td>
         <td><%= link_to 'Edit', edit_fest_path(fest) %></td>
         <td><%= link_to 'Destroy', fest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
