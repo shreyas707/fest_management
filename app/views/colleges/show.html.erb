@@ -10,5 +10,18 @@
   <%= @college.email %>
 </p>
 
+<p>
+
+	<strong>Departments:</strong><br/>
+	
+	<% @college.college_departments.each do |college_department| %>
+		<br/><strong>Name: </strong>
+		<%= college_department.department.name %><br/>
+		<strong>Email: </strong>
+		<%= college_department.email %><br/>
+	<% end %>
+
+</p>
+
 <%= link_to 'Edit', edit_college_path(@college) %> |
 <%= link_to 'Back', colleges_path %>

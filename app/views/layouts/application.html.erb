@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>FestManagement</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>FestManagement</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
 
-<%= yield %>
+		<%= link_to "Colleges", colleges_path %>
+		<%= link_to "Departments", departments_path %>
+		<%= link_to "Fests", fests_path %>
 
-</body>
+	</head>
+	<body>
+
+		<%= yield %>
+
+	</body>
 </html>

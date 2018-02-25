@@ -1,4 +1,4 @@
-<%= form_for(@college) do |f| %>
+<%= nested_form_for(@college) do |f| %>
   <% if @college.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@college.errors.count, "error") %> prohibited this college from being saved:</h2>
@@ -15,10 +15,26 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
+
+  <%= f.fields_for :college_departments, @college_department do |cd| %>
+    
+    <label>Select Department: </label>
+    <%= cd.collection_select :department_id, Department.all, :id, :name, prompt: "Select Department" %>
+
+    <label>Email: </label>
+    <%= cd.text_field :email %>
+
+    <%= cd.link_to_remove "Remove Department" %><br/><br/>
+  
+  <% end %>
+
+  <%= f.link_to_add "Add Department", :college_departments %><br/><br/>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -15,6 +15,7 @@ class CollegesController < ApplicationController
   # GET /colleges/new
   def new
     @college = College.new
+    @college_department = CollegeDepartment.new
   end
 
   # GET /colleges/1/edit
@@ -69,6 +70,6 @@ class CollegesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def college_params
-      params.require(:college).permit(:name, :email)
+      params.require(:college).permit(:name, :email, college_departments_attributes: [:id, :college_id, :department_id, :email, :_destroy])
     end
 end
