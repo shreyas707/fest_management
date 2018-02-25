@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fest.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @fest.description %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @fest.department_id %>
+</p>
+
+<%= link_to 'Edit', edit_fest_path(@fest) %> |
+<%= link_to 'Back', fests_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Fests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Department</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fests.each do |fest| %>
+      <tr>
+        <td><%= fest.name %></td>
+        <td><%= fest.description %></td>
+        <td><%= fest.department_id %></td>
+        <td><%= link_to 'Show', fest %></td>
+        <td><%= link_to 'Edit', edit_fest_path(fest) %></td>
+        <td><%= link_to 'Destroy', fest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fest', new_fest_path %>
