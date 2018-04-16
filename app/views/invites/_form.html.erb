@@ -19,6 +19,16 @@
     <%= f.label :body %><br>
     <%= f.text_area :body %>
   </div>
+
+  <div class="field">
+    <%= f.collection_check_boxes :college_department_ids, CollegeDepartment.all, :id, :email do |cb| %>
+      <%= cb.object.college.name %>
+      <%= cb.object.department.name %>
+      <%= cb.label %>
+      <%= cb.check_box %><br/>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

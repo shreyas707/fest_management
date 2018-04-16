@@ -25,9 +25,14 @@ class InvitesController < ApplicationController
   # POST /invites.json
   def create
     @invite = Invite.new(invite_params)
-
     respond_to do |format|
       if @invite.save
+        # binding.pry
+        # sending email
+        @invite.college_departments.each do |college_department|
+          InviteMailer.send_invite(college_department, @invite.title).deliver
+        end
+
         format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
         format.json { render :show, status: :created, location: @invite }
       else
@@ -69,6 +74,6 @@ class InvitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invite_params
-      params.require(:invite).permit(:title, :body)
+      params.require(:invite).permit(:title, :body, college_department_ids: [])
     end
 end
