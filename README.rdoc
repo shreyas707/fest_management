@@ -7,6 +7,7 @@ To run this app, make sure you have rails installed on your computer.
 From inside the project's folder in cmd/terminal,
 
 > rake db:migrate
+
 > rake db:seed
 
 > rails server
