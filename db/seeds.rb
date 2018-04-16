@@ -25,6 +25,17 @@ Department.create(name: "Civil")
 Department.create(name: "EC")
 Department.create(name: "EEE")
 
+college_id = 1
+8.times do
+	department_id = 1
+	9.times do
+		department_email = College.find(college_id).name.downcase + Department.find(department_id).name.downcase + "@gmail.com"
+		CollegeDepartments.create(college_id: college_id, department_id: department_id, email: department_email)
+		department_id += 1
+	end
+	college_id += 1
+end
+
 Fest.create(name: "MCA Fest" description: "This is MCA Department's fest.")
 Fest.create(name: "MBA Fest" description: "This is MBA Department's fest.")
 Fest.create(name: "MTech Fest" description: "This is MTech Department's fest.")
@@ -35,12 +46,17 @@ Fest.create(name: "Civil Fest" description: "This is Civil Department's fest.")
 Fest.create(name: "EC Fest" description: "This is EC Department's fest.")
 Fest.create(name: "EEE Fest" description: "This is EEE Department's fest.")
 
-college_id = 1
-8.times do
-	department_id = 1
-	9.times do
-		CollegeDepartments.create(college_id: college_id, department_id: department_id, email:)
-		department_id += 1
+fest_id = 1
+9.times do
+	event_no = 1
+	3.times do
+		Event.create(name: "Event " + event_no.to_s, description: "This is event " + event_no.to_s + " of " + Fest.find(fest_id).name + " department.", fest_id: fest_id)
+		event_no += 1
 	end
-	college_id += 1
+	fest_id += 1
 end
+
+
+
+
+
