@@ -1,21 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>FestManagement</title>
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= csrf_meta_tags %>
+	<div class="ui container">
+		<head>
+			<title>FestManagement</title>
+			<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+			<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+			<%= csrf_meta_tags %>
 
-		<%= link_to "Colleges", colleges_path %>
-		<%= link_to "Departments", departments_path %>
-		<%= link_to "Fests", fests_path %>
-		<%= link_to "Events", events_path %>
-		<%= link_to "Invites", invites_path %>
+			<!-- semantic ui -->
+			<link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/semantic.min.css">
+			<script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+			<!-- SEMANTIC DATA TABLES       -->
+			<!-- <script src="http://code.jquery.com/jquery-1.12.4.js"></script> -->
+			<script src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+			<script src="http://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
+			<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script> -->
+			<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css" rel="stylesheet"> -->
+			<link href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">
 
-	</head>
-	<body>
+			<script>
+				$(document).ready(function(){
+					$('.dataTable').DataTable();
+					$('.ui.dropdown').dropdown();
+					$('.ui.popup').popup();
+					$('.tabular.menu .item').tab();
+					$('#context1 .menu .item').tab({context: $('#context1')});
+					$('.ui.accordion').accordion();
+					$('.small.modal').modal();
+					$('.ui.modal').modal();
+				});
+			</script>
 
-		<%= yield %>
 
-	</body>
+		</head>
+
+		<body>
+			<div class="ui secondary pointing menu">
+				<% if user_signed_in? %>
+					<%= link_to "Colleges", colleges_path, class: controller.controller_name == "colleges" ? "active item" : "item" %>
+					<%= link_to "Departments", departments_path, class: controller.controller_name == "departments" ? "active item" : "item"  %>
+					<%= link_to "Fests", fests_path, class: controller.controller_name == "fests" ? "active item" : "item"  %>
+					<%= link_to "Events", events_path, class: controller.controller_name == "events" ? "active item" : "item"  %>
+					<%= link_to "Invites", invites_path, class: controller.controller_name == "invites" ? "active item" : "item" %>
+					<div class="right menu">
+						<%= link_to "Logout", destroy_user_session_path, method: :delete, class: "ui item" %>
+					</div>
+				<% else %>
+					<%= link_to "Login", new_user_session_path, class: "ui active item" %>
+				<% end %>
+			</div>
+
+			<p class="alert"><%= alert %></p>
+			
+			<%= yield %>
+
+		</body>
+	</div>
 </html>

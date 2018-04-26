@@ -14,9 +14,9 @@
 	<strong>Invites:</strong><br/>
 	<% @invite.college_department_invites.each do |cdi| %>
 		<%= cdi.college_department.college.name %>
-		<%= cdi.college_department.department.name %>
+		<%= cdi.college_department.department.name %><br/>
 	<% end %>
 </p>
 
-<%= link_to 'Edit', edit_invite_path(@invite) %> |
-<%= link_to 'Back', invites_path %>
+<%= link_to 'Edit', edit_invite_path(@invite), class: "ui primary button" %>
+<%= link_to 'Back', invites_path, class: "ui black button" %>

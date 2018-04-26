@@ -13,29 +13,29 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <div class="ui input"><%= f.text_field :name %></div><br/><br/>
   </div>
 
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <div class="ui input"><%= f.text_field :email %></div><br/><br/><br/>
   </div>
 
   <%= f.fields_for :college_departments, @college_department do |cd| %>
     
-    <label>Select Department: </label>
-    <%= cd.collection_select :department_id, Department.all, :id, :name, prompt: "Select Department" %>
+    <label>Select Department: </label><br/>
+    <%= cd.collection_select :department_id, Department.all, :id, :name, {prompt: "Select Department"}, {class: "ui search dropdown"} %><br/><br/>
 
-    <label>Email: </label>
-    <%= cd.text_field :email %>
+    <label>Email: </label><br/>
+    <div class="ui input"><%= cd.text_field :email %></div><br/><br/>
 
     <%= cd.link_to_remove "Remove Department" %><br/><br/>
   
   <% end %>
 
-  <%= f.link_to_add "Add Department", :college_departments %><br/><br/>
+  <%= f.link_to_add "Add Department", :college_departments %><br/><br/><br/>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "ui primary button" %><br/><br/>
   </div>
 <% end %>

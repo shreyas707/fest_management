@@ -1,5 +1,6 @@
 class FestsController < ApplicationController
   before_action :set_fest, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /fests
   # GET /fests.json

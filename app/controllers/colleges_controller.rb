@@ -1,5 +1,6 @@
 class CollegesController < ApplicationController
   before_action :set_college, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /colleges
   # GET /colleges.json
