@@ -15,5 +15,12 @@
   <%= @fest.department.name %>
 </p>
 
+<strong>Events:</strong><br/>
+<% @fest.events.each do |event| %>
+	<b><%= event.name %></b>
+	<%= "-" + event.description %><br/><br/>
+<% end %>
+<br/>
+
 <%= link_to 'Edit', edit_fest_path(@fest), class: "ui primary button" %>
 <%= link_to 'Back', fests_path, class: "ui black button" %>

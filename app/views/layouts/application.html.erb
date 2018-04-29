@@ -25,9 +25,6 @@
 					$('.ui.popup').popup();
 					$('.tabular.menu .item').tab();
 					$('#context1 .menu .item').tab({context: $('#context1')});
-					$('.ui.accordion').accordion();
-					$('.small.modal').modal();
-					$('.ui.modal').modal();
 				});
 			</script>
 
@@ -36,6 +33,7 @@
 
 		<body>
 			<div class="ui secondary pointing menu">
+				<%= link_to "Registrations", user_signed_in? ? event_registrations_path : new_event_registration_path, class: controller.controller_name == "event_registrations" ? "active item" : "item" %>
 				<% if user_signed_in? %>
 					<%= link_to "Colleges", colleges_path, class: controller.controller_name == "colleges" ? "active item" : "item" %>
 					<%= link_to "Departments", departments_path, class: controller.controller_name == "departments" ? "active item" : "item"  %>
@@ -46,7 +44,9 @@
 						<%= link_to "Logout", destroy_user_session_path, method: :delete, class: "ui item" %>
 					</div>
 				<% else %>
-					<%= link_to "Login", new_user_session_path, class: "ui active item" %>
+					<div class="right menu">
+						<%= link_to "Login", new_user_session_path, class: controller.controller_name == "sessions" ? "active item" : "item" %>
+					</div>
 				<% end %>
 			</div>
 

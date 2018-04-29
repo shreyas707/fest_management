@@ -5,4 +5,6 @@ class Department < ActiveRecord::Base
 
 	has_many :fests
 
+	validates_presence_of :name
+
 end

@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   
+  get 'event_registrations/success'
+
+  resources :event_registrations
   devise_for :users
   resources :events
   resources :invites
   resources :colleges
   resources :fests
   resources :departments
+  
 
-  root 'fests#index'
+  root 'event_registrations#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

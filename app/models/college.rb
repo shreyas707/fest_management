@@ -4,4 +4,6 @@ class College < ActiveRecord::Base
 	has_many :departments, through: :college_departments
 	accepts_nested_attributes_for :college_departments, allow_destroy: true
 
+	validates_presence_of :name, :email
+
 end
